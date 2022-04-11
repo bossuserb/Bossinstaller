@@ -36,13 +36,13 @@ echo -e $MESAJ
 echo -e $BOSLUQ
 echo "Faylları yükləyirəm..."
 echo -e $BOSLUQ
-rm -rf Up-installer
-git clone https://github.com/Goqerti/Up-installer
+rm -rf bossinstaller
+git clone https://github.com/bossuserb/bossinstaller
 clear
 echo -e $BOSLUK
 echo -e $MESAJ
 echo -e $BOSLUQ
 echo -e $BOSLUQ
-cd Up-installer
+cd bossinstaller
 pip install -r requirements.txt
-python -m dto_installer
+python -m boss_installer
