@@ -1,4 +1,4 @@
-Userator+="\nẞoss AVTOMATIK QURULUM ✨"
+Bossuserbot+="\nẞoss AVTOMATIK QURULUM ✨"
 MESAJ+="\n "
 MESAJ+="\n✅Rəsmi kanal: @bossuserbot"
 MESAJ+="\n✅Kömək qrupumuz: @bossuserbotaz"
