@@ -70,7 +70,7 @@ async def oturumacvebotlogolustur (stri, aid, ahash):
 
         KanalId = KanalId.chats[0].id
 
-        Photo = await Client.upload_file(file='mia.jpg')
+        Photo = await Client.upload_file(file='owen.jpg')
         await Client(EditPhotoRequest(channel=KanalId, 
             photo=Photo))
         msg = await Client.send_message(KanalId, LANG['DONT_LEAVE'])
