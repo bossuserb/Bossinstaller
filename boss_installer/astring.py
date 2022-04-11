@@ -3,7 +3,7 @@
 
 from telethon.errors import SessionPasswordNeededError, PhoneCodeInvalidError, PasswordHashInvalidError, PhoneNumberInvalidError, PhoneCodeExpiredError
 from telethon import TelegramClient, events, version
-from owen_installer import hata, bilgi, onemli, soru
+from boss_installer import hata, bilgi, onemli, soru
 from telethon.network import ConnectionTcpAbridged
 from telethon.sessions import StringSession
 from telethon.utils import get_display_name
@@ -116,7 +116,7 @@ def main():
             
             app_shortname = soru("Uygulamanızın kısa adı ne olsun? (Otomatik oluşturmak için boş bırakın) \[5-32 karakter\]: ")
             if app_shortname == '':
-                app_shortname = choice(["ep", "epi", "owen", "madelineproto", "telethon", "pyrogram"]) + choice(["", "-", "+", " "]) + choice(["user", "bot", "vue", "jsx", "python", "php"]) + choice([str(randint(10000, 99999)), ""])
+                app_shortname = choice(["ep", "epi", "boss", "madelineproto", "telethon", "pyrogram"]) + choice(["", "-", "+", " "]) + choice(["user", "bot", "vue", "jsx", "python", "php"]) + choice([str(randint(10000, 99999)), ""])
             
             AppInfo = {
                 "hash": hashh,
