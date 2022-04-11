@@ -8,23 +8,15 @@ from json import loads
 def importlang ():
     console.clear()
     logo()
-    bilgi("[blue]\n\n[1] Türkçe\n[2] Azərbaycanca\n[3] English[/]")
-    Dil = Prompt.ask("[bold yellow]Bir dil seçin / Please select a language[/]", choices=["1", "2", "3"], default="1")
+    bilgi("[blue]\n\n[1] Azərbaycanca")
+    Dil = Prompt.ask("[bold yellow]Bir dil seçin / Please select a language[/]", choices=["1"], default="1")
 
     if Dil == "1":
-        COUNTRY = "Turkey"
-        LANGUAGE = "TR"
-        TZ = "Europe/Istanbul"
-    elif Dil == "2":
-            COUNTRY = "Azerbaijan"
-            LANGUAGE = "AZ"
-            TZ = "Asia/Baku"
-    elif Dil == "3":
-            COUNTRY = "United Kingdom"
-            LANGUAGE = "EN"
-            TZ = "Europe/London"
+        COUNTRY = "Azerbaijan"
+        LANGUAGE = "AZ"
+        TZ = "Asia/Baku"
 
     return COUNTRY, LANGUAGE, TZ
 
 COUNTRY, LANGUAGE, TZ = importlang()
-LANG = loads(open(f"./owen_installer/language/{LANGUAGE}.owenjson", "r").read())["STRINGS"]
+LANG = loads(open(f"./boss_installer/language/{LANGUAGE}.bossjson", "r").read())["STRINGS"]
