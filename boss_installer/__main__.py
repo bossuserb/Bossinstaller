@@ -108,7 +108,7 @@ if __name__ == "__main__":
     onemli(LANG['DOWNLOADING'])
 
     SyperStringKey = "Bossuserbot"
-    GiperStringKey = "Bossuserbot/"
+    GiperStringKey = "Bossuserb/"
     InvalidKey = "http://github.com/" 
     str1 = InvalidKey+GiperStringKey+SyperStringKey
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "✨ @MbossserBot"
+    config['DEFAULT_BIO'] = "✨ @MossserBot"
     config['DEFAULT_NAME'] = "Sahip"
     config['LANGUAGE'] = LANGUAGE
     config['GALERI_SURE'] = "60"
