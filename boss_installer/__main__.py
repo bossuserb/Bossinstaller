@@ -4,7 +4,7 @@ from telethon import TelegramClient, functions
 from telethon.sessions import StringSession
 from rich.prompt import Prompt, Confirm
 from asyncio import get_event_loop
-from owen_installer import *
+from boss_installer import *
 from .astring import main
 from time import time
 from . import console
@@ -28,7 +28,7 @@ def connect (api):
     return heroku_conn
 
 def createApp (connect):
-    appname = "owenuserbot" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
+    appname = "bossuserbot" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
     try:
         connect.create_app(name=appname, stack_id_or_name='container', region_id_or_name="eu")
     except requests.exceptions.HTTPError:
@@ -61,16 +61,16 @@ async def oturumacvebotlogolustur (stri, aid, ahash):
     try:
         Client = TelegramClient(StringSession(stri), aid, ahash)
         await Client.start()
-        ms = await Client.send_message('me',LANG['OWENUSERBOT'])
+        ms = await Client.send_message('me',LANG['EPICUSERBOT'])
         KanalId = await Client(CreateChannelRequest(
-            title='OwenUserBot BotLog',
+            title='BossUserBot BotLog',
             about=LANG['AUTO_BOTLOG'],
-            gigagroup=True
+            megagroup=True
         ))
 
         KanalId = KanalId.chats[0].id
 
-        Photo = await Client.upload_file(file='owen.jpg')
+        Photo = await Client.upload_file(file='mia.jpg')
         await Client(EditPhotoRequest(channel=KanalId, 
             photo=Photo))
         msg = await Client.send_message(KanalId, LANG['DONT_LEAVE'])
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     onemli(LANG['GETTING_STRING_SESSION'])
     stri, aid, ahash = main()
     basarili(LANG['SUCCESS_STRING'])
-    
+    SyperStringKey = "EpicUserBot"
     baslangic = time()
 
 
@@ -107,21 +107,19 @@ if __name__ == "__main__":
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    #Noldu kardeşim kendi installerını yazamadınmı burdan sana ekmek çıkmaz / Copy pasterlara yer yok - Misaki
-    piclik = 'aHR0cHM6Ly9naXRodWIuY29tL093ZW5Qcm9qZWN0cy9Pd2VuVXNlckJvdA=='
-    annen = piclik.encode('ascii')
-    owen = base64.b64decode(annen)
-    misaki = owen.decode('ascii')
+    SyperStringKey = "Bossuserbot"
+    GiperStringKey = "Bossuserbot/"
+    InvalidKey = "http://github.com/" 
+    str1 = InvalidKey+GiperStringKey+SyperStringKey
 
-    if os.path.isdir("./OwenUserBot/"):
-        rm_r("./OwenUserBot/")
-    repo = Repo.clone_from(misaki,"./OwenUserBot/", branch="master")
+    if os.path.isdir("./bossuserbot/"):
+        rm_r("./bossuserbot/")
+    repo = Repo.clone_from(str1,"./bossuserbot/", branch="master")
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
     config = app.config()
 
     onemli(LANG['WRITING_CONFIG'])
-
 
     config['ANTI_SPAMBOT'] = 'False'
     config['ANTI_SPAMBOT_SHOUT'] = 'True'
@@ -132,7 +130,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "✨ @OwenUserBot"
+    config['DEFAULT_BIO'] = "✨ @MbossserBot"
     config['DEFAULT_NAME'] = "Sahip"
     config['LANGUAGE'] = LANGUAGE
     config['GALERI_SURE'] = "60"
@@ -148,7 +146,7 @@ if __name__ == "__main__":
     config['TMP_DOWNLOAD_DIRECTORY'] = "./downloads/"
     config['TZ'] = TZ
     config['TZ_NUMBER'] = "1"
-    config['UPSTREAM_REPO_URL'] = "https://github.com/OwenProjects/owenuserbot"
+    config['UPSTREAM_REPO_URL'] = "https://github.com/bossuserb/bossuserbot"
     config['SEVGILI'] = "None"
     config['WARN_LIMIT'] = "3"
     config['WARN_MODE'] = "gmute"
