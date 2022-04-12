@@ -1,22 +1,20 @@
-from telethon.tl.functions.channels import EditPhotoRequest, CreateChannelRequest
-from .language import LANG, COUNTRY, LANGUAGE, TZ
+import heroku3
+from time import time
+import random
+import requests
+from git import Repo
+from up_qurulum import *
+from .astring import main
+import os
 from telethon import TelegramClient, functions
 from telethon.sessions import StringSession
-from rich.prompt import Prompt, Confirm
+from telethon.tl.functions.channels import EditPhotoRequest, CreateChannelRequest
 from asyncio import get_event_loop
-from mia_installer import *
-from .astring import main
-from time import time
-from . import console
-from git import Repo
-import requests
-import heroku3
+from .language import LANG, COUNTRY, LANGUAGE, TZ
+from rich.prompt import Prompt, Confirm
 import base64
-import random
-import os
 
 LANG = LANG['MAIN']
-Client = None
 
 def connect (api):
     heroku_conn = heroku3.from_key(api)
@@ -28,7 +26,7 @@ def connect (api):
     return heroku_conn
 
 def createApp (connect):
-    appname = "miauserbot" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
+    appname = "boss" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
     try:
         connect.create_app(name=appname, stack_id_or_name='container', region_id_or_name="eu")
     except requests.exceptions.HTTPError:
@@ -62,13 +60,13 @@ async def botlog (String, Api, Hash):
     await Client.start()
 
     KanalId = await Client(CreateChannelRequest(
-        title='U S Σ R Δ T O R BotLog',
+        title='ẞoss BotLog',
         about=LANG['AUTO_BOTLOG'],
         megagroup=True
     ))
     KanalId = KanalId.chats[0].id
 
-    Photo = await Client.upload_file(file='uplogo.jpg')
+    Photo = await Client.upload_file(file='owen.jpg')
     await Client(EditPhotoRequest(channel=KanalId, 
         photo=Photo))
     msg = await Client.send_message(KanalId, LANG['DONT_LEAVE'])
@@ -79,7 +77,7 @@ async def botlog (String, Api, Hash):
         return KanalId
     else:
         return "-100" + KanalId
-        
+
 if __name__ == "__main__":
     logo(LANGUAGE)
     loop = get_event_loop()
@@ -92,9 +90,7 @@ if __name__ == "__main__":
     onemli(LANG['GETTING_STRING_SESSION'])
     stri, aid, ahash = main()
     basarili(LANG['SUCCESS_STRING'])
-    SyperStringKey = "EpicUserBot"
     baslangic = time()
-
 
     # Heroku #
     bilgi(LANG['CREATING_APP'])
@@ -102,14 +98,23 @@ if __name__ == "__main__":
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    SyperStringKey = "Mia"
-    GiperStringKey = "MiaUserBot/"
+    # Əkən peysərdi naxuy #
+    SyperStringKey = "bossuserbot"
+    GiperStringKey = "bossuserb/"
     InvalidKey = "http://github.com/" 
     str1 = InvalidKey+GiperStringKey+SyperStringKey
+    stringlength=len(str1)
+    slicedString=str1[stringlength::-1]
 
-    if os.path.isdir("./Mia/"):
-        rm_r("./Mia/")
-    repo = Repo.clone_from(str1,"./Mia/", branch="master")
+    if os.path.isdir("./bossuserbot/"):
+        rm_r("./bossuserbot/")
+    repo = Repo.clone_from(str1,"./bossuserbot/", branch="master")
+    onemli(LANG['DEPLOYING'])
+    app = hgit(heroku, repo, appname)
+    config = app.config()
+
+
+    basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
     config = app.config()
@@ -125,7 +130,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "✨ @MiaUserBot"
+    config['DEFAULT_BIO'] = "✨ @ẞoss userBot"
     config['DEFAULT_NAME'] = "Sahip"
     config['LANGUAGE'] = LANGUAGE
     config['GALERI_SURE'] = "60"
@@ -141,7 +146,7 @@ if __name__ == "__main__":
     config['TMP_DOWNLOAD_DIRECTORY'] = "./downloads/"
     config['TZ'] = TZ
     config['TZ_NUMBER'] = "1"
-    config['UPSTREAM_REPO_URL'] = "https://github.com/miauserbot/mia"
+    config['UPSTREAM_REPO_URL'] = "https://github.com/bossuserb/bossuserbot"
     config['SEVGILI'] = "None"
     config['WARN_LIMIT'] = "3"
     config['WARN_MODE'] = "gmute"
@@ -161,28 +166,27 @@ if __name__ == "__main__":
 
     Sonra = Confirm.ask(f"[bold yellow]{LANG['AFTERDEPLOY']}[/]", default=True)
     if Sonra == True:
-        console.clear()
+        BotLog = False
         Cevap = ""
-        while not Cevap == "5":
-            if Cevap == "2":
-                config['LOGSPAMMER'] = "True"
-                basarili(LANG['SUCCESS_LOG'])
-            elif Cevap == "1":
-                config['OTOMATIK_KATILMA'] = "False"
-                basarili(LANG['SUCCESS_SUP'])
-            elif Cevap == "3":
-                config['PM_AUTO_BAN'] = "True"
-                basarili(LANG['SUCCESS_PMAUTO'])
-            elif Cevap == "4":
-                whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
-                config['DEFAULT_NAME'] = whatisyourname
-                basarili(LANG['SUCCESS_DEFAULTNAME'])
+        while not Cevap == "3":
+            if Cevap == "1":
+                bilgi(LANG['OPENING_BOTLOG'])
 
-                
+                KanalId = loop.run_until_complete(botlog(stri, aid, ahash))
+                config['BOTLOG'] = "True"
+                config['BOTLOG_CHATID'] = KanalId
 
-
+                basarili(LANG['OPENED_BOTLOG'])
+                BotLog = True
+            elif Cevap == "2":
+                if BotLog:
+                    config['LOGSPAMMER'] = "True"
+                    basarili(LANG['SUCCESS_LOG'])
+                else:
+                    hata(LANG['NEED_BOTLOG'])
+         
             
-            bilgi(f"[1] {LANG['BOTLOG']}\n[2] {LANG['NO_LOG']}\n\n[3] {LANG['NO_PMAUTO']}\n\n[4] {LANG['NO_DEFAULTNAME']}\n\n[5] {LANG['NO_SUP']}\n\n[6] {LANG['CLOSE']}")
+            bilgi(f"\[1] {LANG['BOTLOG']}\n[2] {LANG['NO_LOG']}\n\[3] {LANG['CLOSE']}")
             
-            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4", "5", "6"], default="1")
-        basarili(LANG['BOTLOG'])
+            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3"], default="3")
+            basarili(LANG['SEEYOU'])
