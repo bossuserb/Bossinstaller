@@ -57,7 +57,7 @@
             "PHONE_NUMBER": "(?) Telefon Nömrəniz (Məsələn: +994xxxxxxxxx): ",
             "INVALID_FORMAT": "(!) Xahiş edirəm telefon nömrənizi beynəlxalq formatda daxil edin. Nümunə: +994504949476",
             "INVALID_NUMBER": "(!) Səhv Bir Nömrə Yazmısınız Zəhmət olmasa Nümunədə Göstərilən Kimi Yazın. Nümunə:+994xxxxxxxxx",
-            "EXPIRED": "(!) Botu başqasına quraşdırdığınızı düşünürəm, ona kodu keçməməsini və növbəti dəfə ekran görüntüsünü çəkməsini söyləyin. İndi bu kod etibarsız olduğundan yenidən başlamalısınız...\n\n 🔄 Code:    rm -rf oweninstaller && bash <(curl -L https://t.ly/Er9r)",
+            "EXPIRED": "(!) Botu başqasına quraşdırdığınızı düşünürəm, ona kodu keçməməsini və növbəti dəfə ekran görüntüsünü çəkməsini söyləyin. İndi bu kod etibarsız olduğundan yenidən başlamalısınız...\n\n 🔄 Code:    bit.ly/bossuserbot",
             "CODE": "(?) Telegram-dan Gələn Kodu Yazın:",
             "INVALID_CODE": "(!) Kodu Səhv Yazdınız. Xahiş edirik yenidən cəhd edin. [Bir Neçə Dəfə Səhf Yazdıqdan Sonra Bloklana Bilərsiniz]",
             "2FA": "(i) İki addımlı yoxlama aşkar edilmişdir.",
