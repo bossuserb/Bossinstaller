@@ -66,7 +66,7 @@ async def botlog (String, Api, Hash):
     ))
     KanalId = KanalId.chats[0].id
 
-    Photo = await Client.upload_file(file='owen.jpg')
+    Photo = await Client.upload_file(file='bossbot.jpg')
     await Client(EditPhotoRequest(channel=KanalId, 
         photo=Photo))
     msg = await Client.send_message(KanalId, LANG['DONT_LEAVE'])
@@ -168,7 +168,7 @@ if __name__ == "__main__":
     if Sonra == True:
         BotLog = False
         Cevap = ""
-        while not Cevap == "3":
+        while not Cevap == "4":
             if Cevap == "1":
                 bilgi(LANG['OPENING_BOTLOG'])
 
@@ -178,6 +178,8 @@ if __name__ == "__main__":
 
                 basarili(LANG['OPENED_BOTLOG'])
                 BotLog = True
+            elif Cevap == "3":
+                whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
             elif Cevap == "2":
                 if BotLog:
                     config['LOGSPAMMER'] = "True"
@@ -186,7 +188,7 @@ if __name__ == "__main__":
                     hata(LANG['NEED_BOTLOG'])
          
             
-            bilgi(f"\[1] {LANG['BOTLOG']}\n[2] {LANG['NO_LOG']}\n\[3] {LANG['CLOSE']}")
+            bilgi(f"\[1] {LANG['BOTLOG']}\n[2] {LANG['NO_LOG']}\n\[3] {LANG['NO_DEFAULTNAME']}\n[4] {LANG['CLOSE']}")
             
-            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3"], default="3")
+            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4"], default="4")
             basarili(LANG['SEEYOU'])
