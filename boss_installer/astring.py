@@ -84,13 +84,13 @@ def main():
             
     Sonuc = Prompt.ask(f"[bold yellow]{LANG['WHICH']}[/]", choices=["1", "2"], default="1")
 
-    if Sonuc == "1":
+    if Sonuc == "2":
         API_ID = 2583522
         API_HASH = "e68eeaf82569220cdb60c449ae9925ad"
         
         client = InteractiveTelegramClient(StringSession(), API_ID, API_HASH)
         return client.session.save(), API_ID, API_HASH
-    elif Sonuc == "2":
+    elif Sonuc == "1":
         numara = soru(LANG['PHONE_NUMBER_NEW'])
         try:
             rastgele = requests.post("https://my.telegram.org/auth/send_password", data={"phone": numara}).json()["random_hash"]
