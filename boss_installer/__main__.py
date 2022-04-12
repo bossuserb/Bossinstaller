@@ -180,6 +180,9 @@ if __name__ == "__main__":
                 BotLog = True
             elif Cevap == "3":
                 whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
+                config['DEFAULT_NAME'] = whatisyourname
+                basarili(LANG['SUCCESS_DEFAULTNAME'])
+
             elif Cevap == "2":
                 if BotLog:
                     config['LOGSPAMMER'] = "True"
