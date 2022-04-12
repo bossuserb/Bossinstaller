@@ -1,5 +1,5 @@
 # Don't kang without permission #
-# @OwenUserBot #
+# @bossuserBot #
 
 from telethon.errors import SessionPasswordNeededError, PhoneCodeInvalidError, PasswordHashInvalidError, PhoneNumberInvalidError, PhoneCodeExpiredError
 from telethon import TelegramClient, events, version
