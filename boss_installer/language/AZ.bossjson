@@ -81,7 +81,7 @@
             "SCRAPING": "(i) Artıq bir tətbiq yaratmısınız. API ID / HASH Məlumatları Çəkilir...",
             "ERROR": "(!) Bir xəta baş verdi.",
             "NEW": "Yeni üsul (Tövsiyyə edilən)",
-            "OLD": "Köhnə (hesabın silinmə ehtimalı az danolsa var. Yeni üsul məsləhətlidir"
+            "OLD": "Köhnə (hesabın silinmə ehtimalı az da olsa var. Yeni üsul məsləhətlidir"
         }
     }
 }
