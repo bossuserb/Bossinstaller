@@ -22,7 +22,7 @@ def logo (dil = "None"):
    surum = str(sys.version_info[0]) + "." + str(sys.version_info[1])
    console.print(Panel(f"[bold blue]@BossUserBot Installer ✨[/]\n\n[bold cyan]Version: [/][i]2.1[/]\n[bold cyan]Python: [/][i]{surum}[/]\n[bold cyan]Dil: [/][i]{dil}[/]",width=80),justify="center")                         
 def tamamlandi (saniye):
-   console.print(Panel(f"[bold green]Şükürlər Allah'ım. Qurulum Tamamlandı!\n[i]Botu {round(saniye)} saniyə içində qurdunuz.[/]\n\n[bold green]30 saniyə sonra hansısa bir söhbətə .alive yazaraq test edə bilərsən.Sahibim Hüsnü və Araz sizə xoş gün diləyir :)[/]",width=70),justify="center")                     
+   console.print(Panel(f"[bold green]✨ Bosseuserbot Setup✨\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n`🎉 Quraşdırılma uğurla başa çatdı! Botu .alive əmri ilə sınayın!\n\n🙃 .boss əmri ilə bütün əmrlərə baxa bilərsiniz və probleminiz olduqda` **@bosssupportaz**` qrupundan soruşa bilərsiniz. y yazıb enter vurun, botlog açın və adınızı qeyd edin `",[/]",width=70),justify="center")
                    
 def rm_r(path):
     if not os.path.exists(path):
