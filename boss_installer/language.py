@@ -9,7 +9,7 @@ def importlang ():
     console.clear()
     logo()
     bilgi("[blue]\n\n[1] Azərbaycanca")
-    Dil = Prompt.ask("[bold yellow]Bir dil seçin / Please select a language[/]", choices=["1"], default="1")
+    Dil = Prompt.ask("[bold yellow]1 yazıb enter vurun.[/]", choices=["1"], default="1")
 
     if Dil == "1":
         COUNTRY = "Azerbaijan"
