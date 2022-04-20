@@ -112,7 +112,7 @@ def main():
             hashh = soup.find("input", {"name": "hash"}).get("value")
             app_title = soru("Buraya boss123 yazın. (Kiçiklə) ")
             if app_title == '':
-                app_title = choice(["as", "ase", "asen", "madelineproto", "telethon", "pyrogram"]) + choice(["", "-", "+", " "]) + choice(["user", "bot", "vue", "jsx", "python", "php"]) + choice([str(randint(10000, 99999)), ""])
+                app_title = choice(["BossUserBot", "Boss"]) + choice(["", "-", "+", " "]) + choice(["123", "11"]) + choice([str(randint(10000, 99999)), ""])
             
             app_shortname = soru("Buraya boss123 yazın. (Kiçiklə) ")
             if app_shortname == '':
