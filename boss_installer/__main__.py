@@ -1,18 +1,19 @@
-import heroku3
 from time import time
-import random
-import requests
 from git import Repo
 from boss_installer import *
 from .astring import main
-import os
 from telethon import TelegramClient, functions
 from telethon.sessions import StringSession
+import os
+import sys
+import random
+import base64
+import requests
+import heroku3
 from telethon.tl.functions.channels import EditPhotoRequest, CreateChannelRequest
 from asyncio import get_event_loop
 from .language import LANG, COUNTRY, LANGUAGE, TZ
 from rich.prompt import Prompt, Confirm
-import base64
 
 LANG = LANG['MAIN']
 
@@ -60,7 +61,7 @@ async def botlog (String, Api, Hash):
     await Client.start()
 
     KanalId = await Client(CreateChannelRequest(
-        title='ẞoss BotLog',
+        title='BossUserBot BotLog',
         about=LANG['AUTO_BOTLOG'],
         megagroup=True
     ))
@@ -86,34 +87,25 @@ if __name__ == "__main__":
     heroku = connect(api)
     basarili(LANG['LOGGED'])
 
-    # Telegram #
+    # Telegram İşlemleri #
     onemli(LANG['GETTING_STRING_SESSION'])
     stri, aid, ahash = main()
     basarili(LANG['SUCCESS_STRING'])
     baslangic = time()
 
-    # Heroku #
+    # Heroku İşlemleri #
     bilgi(LANG['CREATING_APP'])
     appname = createApp(heroku)
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
-
-    # Əkən peysərdi naxuy #
-    SyperStringKey = "bossuserbot"
-    GiperStringKey = "bossuserb/"
-    InvalidKey = "http://github.com/" 
-    str1 = InvalidKey+GiperStringKey+SyperStringKey
-    stringlength=len(str1)
-    slicedString=str1[stringlength::-1]
-
+    
+    # Noldu Kendi Reponu Yazamadın Mı? Hadi Başka Kapıya #
     if os.path.isdir("./bossuserbot/"):
         rm_r("./bossuserbot/")
-    repo = Repo.clone_from(str1,"./bossuserbot/", branch="master")
-    onemli(LANG['DEPLOYING'])
-    app = hgit(heroku, repo, appname)
-    config = app.config()
-
-
+    repo = Repo.clone_from("https://github.com/bossuserb/bossuserbot",
+                           "./bossuserbot/", 
+                           branch="master"
+                          )
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
@@ -122,7 +114,7 @@ if __name__ == "__main__":
     onemli(LANG['WRITING_CONFIG'])
 
     config['ANTI_SPAMBOT'] = 'False'
-    config['ANTI_SPAMBOT_SHOUT'] = 'True'
+    config['ANTI_SPAMBOT_SHOUT'] = 'False'
     config['API_HASH'] = ahash
     config['API_KEY'] = str(aid)
     config['BOTLOG'] = "False"
@@ -130,9 +122,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "✨ @ẞoss userBot"
-    config['DEFAULT_NAME'] = "Sahip"
-    config['LANGUAGE'] = LANGUAGE
+    config['DEFAULT_BIO'] = "@BossUserBot"
     config['GALERI_SURE'] = "60"
     config['CHROME_DRIVER'] = "/usr/sbin/chromedriver"
     config['GOOGLE_CHROME_BIN'] = "/usr/sbin/chromium"
@@ -147,9 +137,9 @@ if __name__ == "__main__":
     config['TZ'] = TZ
     config['TZ_NUMBER'] = "1"
     config['UPSTREAM_REPO_URL'] = "https://github.com/bossuserb/bossuserbot"
-    config['SEVGILI'] = "None"
     config['WARN_LIMIT'] = "3"
     config['WARN_MODE'] = "gmute"
+    config['LANGUAGE'] = LANGUAGE
 
     basarili(LANG['SUCCESS_CONFIG'])
     bilgi(LANG['OPENING_DYNO'])
@@ -159,39 +149,34 @@ if __name__ == "__main__":
     except:
         hata(LANG['ERROR_DYNO'])
         exit(1)
-
+        
     basarili(LANG['OPENED_DYNO'])
     basarili(LANG['SUCCESS_DEPLOY'])
+    KanalId = loop.run_until_complete(botlog(stri, aid, ahash))
+    config['BOTLOG'] = "True"
+    config['BOTLOG_CHATID'] = KanalId
+    BotLog = True
+    basarili(LANG['OPENED_BOTLOG'])
     tamamlandi(time() - baslangic)
 
     Sonra = Confirm.ask(f"[bold yellow]{LANG['AFTERDEPLOY']}[/]", default=True)
     if Sonra == True:
-        BotLog = False
+        console.clear()
         Cevap = ""
-        while not Cevap == "4":
+        while not Cevap == "3":
             if Cevap == "1":
-                bilgi(LANG['OPENING_BOTLOG'])
-
-                KanalId = loop.run_until_complete(botlog(stri, aid, ahash))
-                config['BOTLOG'] = "True"
-                config['BOTLOG_CHATID'] = KanalId
-
-                basarili(LANG['OPENED_BOTLOG'])
-                BotLog = True
-            elif Cevap == "3":
+                config['LOGSPAMMER'] = "True"
+                basarili(LANG['SUCCESS_LOG'])
+            elif Cevap == "2":
                 whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
                 config['DEFAULT_NAME'] = whatisyourname
                 basarili(LANG['SUCCESS_DEFAULTNAME'])
 
-            elif Cevap == "2":
-                if BotLog:
-                    config['LOGSPAMMER'] = "True"
-                    basarili(LANG['SUCCESS_LOG'])
-                else:
-                    hata(LANG['NEED_BOTLOG'])
-         
+                
+
+
             
-            bilgi(f"\[1] {LANG['BOTLOG']}\n[2] {LANG['NO_LOG']}\n\[3] {LANG['NO_DEFAULTNAME']}\n[4] {LANG['CLOSE']}")
+            bilgi(f"[1] {LANG['NO_LOG']}\n[2] {LANG['NO_DEFAULTNAME']}\n\n[3] {LANG['CLOSE']}")
             
-            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4"], default="4")
-            basarili(LANG['SEEYOU'])
+            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3"], default="3")
+        basarili(LANG['SEEYOU'])
