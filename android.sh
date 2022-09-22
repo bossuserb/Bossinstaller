@@ -33,6 +33,7 @@ echo -e $BOSLUQ
 pip install telethon
 clear
 echo -e $MESAJ
+#int tm_sec; // seconds of minutes from 0 to 61
 echo -e $BOSLUQ
 echo "Faylları yükləyirəm..."
 echo -e $BOSLUQ
